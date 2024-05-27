@@ -120,15 +120,12 @@ int* tournamentMatrix(List *lista_echipe)
     for(register List *p = lista_echipe; p; p = p->next) 
         enQueue(castigatori, p);
 
-    int numar_runde, numar_echipe;
-    numar_runde = numar_echipe = 16;
-    numar_runde++;
-    while(numar_runde)
+    int numar_echipe = 16;
+    while(numar_echipe)
     {
         Queue *pierzatori = createQueue();
 
         match(castigatori, pierzatori, numar_echipe, matrice_turneu);
-        numar_runde--;
         numar_echipe /= 2;
 
         delQueue(&pierzatori);
