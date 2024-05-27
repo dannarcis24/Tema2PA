@@ -16,51 +16,47 @@ Team* createTeam()
     return nod;
 }
 
-TeamList* createTeamList()
+List* createList()
 {
-    TeamList *nod = (TeamList*)malloc(sizeof(TeamList));
+    List *nod = (List*)malloc(sizeof(List));
     if(!nod)
     {
         printf("variabilei nod nu i s-a putut aloca memorie");
         exit(1);
     }
 
-    nod->echipa = NULL;
-    nod->next = NULL;
+    nod->val = NULL;
 
     return nod;
 }
 
-void addTeam(TeamList **list, Team *elem)
+void addElem(List **list, Team *elem)
 {
     if(!(*list))
     {
-        *list = createTeamList();
-        (*list)->echipa = elem;
+        *list = createList();
+        (*list)->val = elem;
 
         return;
     }
 
-    TeamList *p;
+    List *p;
     for(p = *list; p->next; p = p->next)
         ;
     
-    p->next = createTeamList();
-    p->next->echipa = elem;
+    p->next = createList();
+    p->next->val = elem;
 }
 
-void delTeamList(TeamList **list)
+void delList(List **list)
 {
-    TeamList *p = *list;
-    while(p)
+    while(*list)
     {
-        TeamList *q = p->next;
+        List *q = (*list)->next;
+        free(((Team*)(*list)->val)->nume_echipa);
+        free(*list);
 
-        free(p->echipa->nume_echipa);
-        free(p->echipa);
-        free(p);
-
-        p = q;
+        *list = q;
     }
 
     *list = NULL;
