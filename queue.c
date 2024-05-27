@@ -14,10 +14,11 @@ Queue* createQueue()
     return nod;
 }
 
-void enQueue(Queue *q, TeamList *elem)
+void enQueue(Queue *q, List *elem)
 {
-    TeamList *nod = createTeamList();
-    nod = elem;
+    List *nod = createList();
+    nod->val = elem;
+    nod->next = NULL;
 
     if(!q->first)
     {
@@ -25,19 +26,19 @@ void enQueue(Queue *q, TeamList *elem)
         return;
     }
 
-    q->last->next = nod;
+    ((List*)q->last)->next = nod;
     q->last = nod;
 } 
 
-Team* deQueue(Queue *q)
+List* deQueue(Queue *q)
 {
     if(!q->first)
         return NULL;
 
-    Team *nod = q->first->echipa;
-    TeamList *p = q->first;
+    List *nod = ((List*)q->first)->val;
+    void *p = q->first;
 
-    q->first = q->first->next;
+    q->first = ((List*)p)->next;
     if(!q->first)
         q->last = NULL;
 
@@ -53,7 +54,7 @@ void delQueue(Queue **q)
     
     while((*q)->first)
     {
-        TeamList *p = (*q)->first;
+        List *p  = ((List*)((*q)->first));
         (*q)->first = p->next;
 
         free(p);
