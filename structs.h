@@ -11,24 +11,24 @@ typedef struct{
 } Team;
 
 typedef struct a{
-    Team *echipa;
+    void *val;
     struct a *next;
-} TeamList;
+} List;
 
-typedef struct b{
-    TeamList *first, *last;
+typedef struct{
+    void *first, *last;
 } Queue;
 
 // APELURILE PENTRU FUNCTII DE LISTE INLANTUITE
 //          (creare, adaugare, stergere)
 Team* createTeam();
-TeamList* createTeamList();
-void addTeam(TeamList**, Team*);
-void delTeamList(TeamList**);
+List* createList();
+void addElem(List**, Team*);
+void delList(List**);
 
 // APELURILE PENTRU FUNCTII DE GESTIONAREA UNEI COZI
 //          (creare, adaugare, stergere)
 Queue* createQueue();
-void enQueue(Queue *q, TeamList*);
-Team* deQueue(Queue *q);
+void enQueue(Queue *q, List*);
+List* deQueue(Queue *q);
 void delQueue(Queue **q);
