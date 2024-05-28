@@ -29,10 +29,14 @@ int main(int argc, char *argv[])
     errorInput(argc, argv);
 
     List *lista_echipe = dataInput(argv[1]);
-    int *matrice_turneu = tournamentMatrix(lista_echipe);
+    Queue *lista_invinsi = NULL;
+    int *matrice_turneu = tournamentMatrix(lista_echipe, &lista_invinsi);
     writeMatrix(matrice_turneu, argv[2]);
-    
+    pointsTeam(lista_echipe, matrice_turneu);
+    writeQueue(lista_invinsi, argv[3]);
+
     free(matrice_turneu);
+    delQueue(&lista_invinsi);
     delList(&lista_echipe);
     return 0;
 }
