@@ -27,8 +27,9 @@ void addElem(List**, Team*);
 void delList(List**);
 
 // APELURILE PENTRU FUNCTII DE GESTIONAREA UNEI COZI
-//          (creare, adaugare, stergere)
+//          (creare, adaugare, afisare, stergere)
 Queue* createQueue();
 void enQueue(Queue *q, List*);
 List* deQueue(Queue *q);
+void writeQueue(Queue *q, char*);
 void delQueue(Queue **q);
