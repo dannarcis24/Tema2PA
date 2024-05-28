@@ -30,7 +30,7 @@ List* createList()
     return nod;
 }
 
-void addElem(List **list, Team *elem)
+void addElem(List **list, Team *elem) // lista va primi adresele catre elementele, care trebuiesc retinute
 {
     if(!(*list))
     {
