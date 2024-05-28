@@ -47,6 +47,20 @@ List* deQueue(Queue *q)
     return nod;
 }
 
+void writeQueue(Queue *q, char *fisier)
+{
+    FILE *f = fopen(fisier, "wt");
+    if(!f)
+    {
+        printf("nu s-a putut deschide fisierul %s\n", fisier);
+        exit(1);
+    }
+
+    for(register List *p = q->first; p; p = p->next)
+        fprintf(f, "%.4f %s\n", ((Team*)((List*)p->val)->val)->punctaj, ((Team*)((List*)p->val)->val)->nume_echipa);
+    fclose(f);
+}
+
 void delQueue(Queue **q)
 {
     if(!(*q))
