@@ -29,7 +29,7 @@ int main(int argc, char *argv[])
     errorInput(argc, argv);
 
     List *lista_echipe = dataInput(argv[1]);
-    Queue *lista_invinsi = NULL;
+    Queue *lista_invinsi = NULL; // coada va fi folosita pentru afisarea la cerinta 2
     int *matrice_turneu = tournamentMatrix(lista_echipe, &lista_invinsi);
     writeMatrix(matrice_turneu, argv[2]);
     pointsTeam(lista_echipe, matrice_turneu);
