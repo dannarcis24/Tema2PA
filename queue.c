@@ -14,7 +14,7 @@ Queue* createQueue()
     return nod;
 }
 
-void enQueue(Queue *q, List *elem)
+void enQueue(Queue *q, List *elem) // coada retine adresele elementelor, nu le copiaza
 {
     List *nod = createList();
     nod->val = elem;
@@ -47,7 +47,7 @@ List* deQueue(Queue *q)
     return nod;
 }
 
-void writeQueue(Queue *q, char *fisier)
+void writeQueue(Queue *q, char *fisier)  // afisarea este specifica, va afisa punctajul, urmat de numele echipei
 {
     FILE *f = fopen(fisier, "wt");
     if(!f)
